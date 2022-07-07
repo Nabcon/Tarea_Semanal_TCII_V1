@@ -1,0 +1,23 @@
+* C:\Users\Nahuel\OneDrive - UTN.BA\2022\Teoría de Circuitos II\Practica\Trabajo Semanal\TS6\LTSpice\Circuito_param.asc
+C11 N003 N001 {C_11}
+R12 N005 N003 {R_2}
+XU1 N004 N002 N005 opamp Aol=100K GBW=10Meg
+C22 N002 Vo1 {C_11}
+R13 N004 N005 {R}
+R14 Vo1 N004 {R}
+R15 N002 N001 {R_5}
+XU2 N004 N003 Vo1 opamp Aol=100K GBW=10Meg
+V1 N001 0 AC 1
+R11 0 N003 {R}
+C2 Vo Vo1 {C_2}
+R2 Vo 0 {R}
+.param R= wz
+.param C_11 = {1/{ww*wz}}
+.param C_2 = {1/{ww*wz}}
+.param R_5 = {9*wz/8}
+.inc opamp.sub
+.ac dec 10000 0.01 10
+.param wz=1 ww=2*pi
+.param R_2 = {8*wz/9}
+.backanno
+.end
